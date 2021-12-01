@@ -7,6 +7,6 @@ def generate_name():
     words = [
         "Premier League", "Championship", "League One", "League Two"
     ]
-
-    league_name = { "league" : [random.choice(words)]}
+    choice = random.choice(words)
+    league_name = { "league" : choice}
     return Response(league_name, mimetype='text/plain')
