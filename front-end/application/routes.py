@@ -9,10 +9,17 @@ import requests
 def generator():
   league_name=requests.get("http://league-generator:5000/league")
   baby_name=requests.get("http://name-generator:5000/name")
-  club_name = requests.post("http://club-generator:5000/club", json={"league_name":league_name, "baby_name":baby_name})
-  return render_template('home.html', baby=baby_name.text, league=league_name.text, club=club_name.text)
+  club_name=requests.post("http://club-generator:5000/club", json = {"baby_name": baby_name.json()["name"], "league_name": league_name.json()["league_name"]})
+  show5 = babies.query.order_by(babies.id.desc()).limit(5).all()
+  db.session.add(babies(baby_name=baby_name.json()["name"], league_name=league_name.json()["league_name"], club_name=club_name.text))
+  db.session.commit()
 
-#if league_name == 'League One' or league_name == 'League Two':
-    #print(f'Your baby {baby_name} is going to support {club_name} from {league_name}!')
-#else:
-    #print(f'Your baby {baby_name} is going to support {club_name} from the {league_name}!')
+  return render_template('home.html', baby=baby_name.json()["name"], league=league_name.json()["league_name"], club=club_name.text, show5 = show5)
+
+
+#baby = 
+  
+  #
+  
+  
+  #, show5 = show5)

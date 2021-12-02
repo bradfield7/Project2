@@ -11,4 +11,4 @@ def generate_name():
 
     choice = random.choice(words)
     baby_name = { "name" : choice}
-    return Response(baby_name, mimetype='text/plain')
+    return jsonify(baby_name)

@@ -8,5 +8,5 @@ def generate_name():
         "Premier League", "Championship", "League One", "League Two"
     ]
     choice = random.choice(words)
-    league_name = { "league" : choice}
-    return Response(league_name, mimetype='text/plain')
+    league_name = { "league_name" : choice}
+    return jsonify(league_name)

@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+  front-end:
+    container_name: front-end
+    build: ./front-end
+    ports:
+    - published: 5000
+      target: 5000
+      protocol: tcp
+
+  name-generator:
+    container_name: name-generator
+    build: ./name-generator
+
+
+  league-generator:
+    container_name: league-generator
+    build: ./league-generator
+
+
+  club-generator:
+    container_name: club-generator
+    build: ./club-generator
