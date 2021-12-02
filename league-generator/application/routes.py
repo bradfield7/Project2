@@ -3,7 +3,7 @@ from flask import Flask, request, Response, jsonify
 import random
 
 @app.route('/league', methods=['GET'])
-def generate_name():
+def generate_league():
     words = [
         "Premier League", "Championship", "League One", "League Two"
     ]
