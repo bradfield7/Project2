@@ -2,6 +2,7 @@ version: "3.8"
 services:
   front-end:
     container_name: front-end
+    image: bradfield7/project2-front-end:latest
     build: ./front-end
     ports:
     - published: 5000
@@ -10,14 +11,17 @@ services:
 
   name-generator:
     container_name: name-generator
+    image: bradfield7/project2-name-generator:latest
     build: ./name-generator
 
 
   league-generator:
     container_name: league-generator
+    image: bradfield7/project2-league-generator:latest
     build: ./league-generator
 
 
   club-generator:
     container_name: club-generator
+    image: bradfield7/project2-club-generator:latest
     build: ./club-generator
