@@ -1,2 +1,17 @@
 ---
 # tasks file for swarm-manager
+
+- name: "start swarm"
+  docker_swarm:
+    state: present
+
+- name: "get swarm info"
+  docker_swarm_info:
+  register: info
+
+- name: "Deploy app"
+  docker_stack:
+    state: present
+    name: babygen
+    compose:
+      - /home/jenkins/docker-compose.yaml
