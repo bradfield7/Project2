@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Who will your child support?</title>
+    </head>
+
+    <h1>who will your child support?</h1>
+
+    <body>
+        <h2>your child will be called {{baby}} and they will support {{league}} : {{club}}</h2> 
+    </body>
+    <h3>last 5 tries:</h3>
+    <br>
+    <p>
+        {% for babies in show5 %}
+     --- Your child will be called  {{ babies.baby_name }} and they will support {{ babies.league_name}} : {{babies.club_name}} ---
+<br>
+        {% endfor %}
+    </p>
+</html>

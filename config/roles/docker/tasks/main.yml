@@ -1,0 +1,66 @@
+---
+# tasks file for docker
+
+- name: Install docker
+  apt:
+    name: python-docker
+    state: latest
+    update_cache: true
+  become: yes
+
+- name: Install pip
+  apt:
+    name: python3-pip
+    state: latest
+    update_cache: true
+  become: yes
+
+- name: Install nginx
+  apt:
+    name: nginx
+    state: latest
+    update_cache: true
+  become: yes
+ 
+- name: Start nginx
+  service: 
+    name: nginx
+    state: started
+  ignore_errors: yes
+  become: yes
+ 
+- name: Add nginx.conf
+  template:
+      src: "/home/ba_fi/project2/nginx.conf"
+      dest: /etc/nginx/nginx.conf
+  become: yes
+  register: nginx_config
+
+- name: Restart nginx
+  service:
+    name: nginx
+    state: restarted
+  become: yes
+  when: nginx_config.changed == true
+
+- name: 'docker group'
+  group:
+    name: docker
+    state: present
+
+- name: add jenkins to docker group
+  user:
+    name: jenkins
+    group: docker
+    append: yes
+  become: yes
+  
+- name: pip install dependencies
+  pip:
+    name:
+      - jsondiff
+      - docker
+    executable: pip3
+
+
+
