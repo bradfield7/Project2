@@ -2,12 +2,23 @@
 # tasks file for swarm-manager
 
 - name: "start swarm"
-  docker_swarm:
-    state: present
+  shell: docker swarm init
+  become: yes
+  ignore_errors: true
 
 - name: "get swarm info"
   docker_swarm_info:
   register: info
+
+- name: pip install dependencies
+  pip:
+    name:
+      - jsondiff
+      - docker
+      - pyyaml
+    executable: pip
+
+
 
 - name: "Deploy app"
   docker_stack:
