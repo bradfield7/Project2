@@ -27,10 +27,10 @@ Following the brief, and deciding to carry on from my first project, I decided t
 I will also use NGINX as a reverse proxy, this will listen on port 80 on the host machine and direct the traffic to port 5000, where the front-end container is located. This offers a layer of protection to the app and data.
 
 This is a diagram of the layout of my app and the basics of how it will work/be directed
-[!ERD](https://github.com/bradfield7/Project2/blob/main/projscreenshots/service.png)
+![ERD](https://github.com/bradfield7/Project2/blob/main/projscreenshots/service.png)
 
 This is my app in action
-[!app](https://github.com/bradfield7/Project2/blob/main/projscreenshots/workingapp2.png)
+![app](https://github.com/bradfield7/Project2/blob/main/projscreenshots/workingapp2.png)
 
 
 ## CI/CD Pipeline:
@@ -40,19 +40,19 @@ this is the link https://bradfield.atlassian.net/jira/software/projects/PR2/boar
 
 Git was used for version control and github was used to store my repository. i used a dev branch and a feature branch in my work so I had more room for freedom without risk of bugs and errors making it to the main branch while I was developing, here is a rundown of my branches throughout the project:
 
-[!branches](https://github.com/bradfield7/Project2/blob/main/projscreenshots/networkgraph.png)
+![branches](https://github.com/bradfield7/Project2/blob/main/projscreenshots/networkgraph.png)
 
 The development environment I used was an ubuntu VM, using Google cloud platform.
 
 For the CI server I used jenkins, jenkins would clone down my github repo and peform the script from the 'Jenkinsfile', this included testing, building/pushing images and deploying the app. For the testing I had to include mocking, which simulates the idea of randomness but allows you to say what you want the input to be, this allows you to check specific actions as, although not impossible, it could possibly not come up during tests.
 I didn't manage to find a way to get the clearest results possible from my tests but here are images of my coverage:
-[!test1](https://github.com/bradfield7/Project2/blob/main/projscreenshots/nameGenTests.png)
+![test1](https://github.com/bradfield7/Project2/blob/main/projscreenshots/nameGenTests.png)
 
-[!test2](https://github.com/bradfield7/Project2/blob/main/projscreenshots/leagueGenTests.png)
+![test2](https://github.com/bradfield7/Project2/blob/main/projscreenshots/leagueGenTests.png)
 
-[!test3](https://github.com/bradfield7/Project2/blob/main/projscreenshots/clubGenTests.png)
+![test3](https://github.com/bradfield7/Project2/blob/main/projscreenshots/clubGenTests.png)
 
-[!test4](https://github.com/bradfield7/Project2/blob/main/projscreenshots/front-endTests.png)
+![test4](https://github.com/bradfield7/Project2/blob/main/projscreenshots/front-endTests.png)
 
 as you can see it is including some python files which is bringing down my total coverage, even though they should be excluded. the files that matter though all have great coverage
 
@@ -62,15 +62,15 @@ Following this, it moves on to the deploy stage. the scp command will send the d
 
 After the ansible playbook has ran through all its roles and tasks it will look similar to this:
 
-[!ansible](https://github.com/bradfield7/Project2/blob/main/projscreenshots/ansibleworking.png)
+![ansible](https://github.com/bradfield7/Project2/blob/main/projscreenshots/ansibleworking.png)
 Ideally it would show a lot more as yellow "changed" but I ran into multiple errors so had to go through step by step. it its been processed already in a previous step it will show as a green "ok" so it doesn't waste time building again.
 
 this is what the same playbook looks like when it has ran through jenkins:
-[!jenkinsplay](https://github.com/bradfield7/Project2/blob/main/projscreenshots/jenkinsfinish.png)
+![jenkinsplay](https://github.com/bradfield7/Project2/blob/main/projscreenshots/jenkinsfinish.png)
 
 Jenkins also shows a nice feature for the jenkinsfile, with checkpoints for each "stage" in the file:
 
-[!jenk](https://github.com/bradfield7/Project2/blob/main/projscreenshots/jenkinstable.png)
+![jenk](https://github.com/bradfield7/Project2/blob/main/projscreenshots/jenkinstable.png)
 
 as you can see from the image, it failed at the last stage on a couple of previous builds, but on the third try it succeeded and built successfully.
 
